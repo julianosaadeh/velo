@@ -85,8 +85,7 @@ const OrderLookup = () => {
               <div>
                 <Label htmlFor="order-id">Número do Pedido</Label>
                 <Input
-                  id="order-id"
-                  data-testid="search-order-id"
+                  id="order-id"           
                   type="text"
                   placeholder="Ex: VLO-ABC123"
                   value={orderId}
@@ -95,8 +94,7 @@ const OrderLookup = () => {
                 />
               </div>
               <Button
-                type="submit"
-                data-testid="search-order-button"
+                type="submit"               
                 className="w-full"
                 disabled={!orderId.trim() || isLoading}
               >
@@ -140,7 +138,7 @@ const OrderLookup = () => {
                   <Package className="w-5 h-5 text-muted-foreground" />
                   <div>
                     <p className="text-sm text-muted-foreground">Pedido</p>
-                    <p className="font-mono font-medium" data-testid="order-result-id">
+                    <p className="font-mono font-medium">
                       {searchedOrder.id}
                     </p>
                   </div>

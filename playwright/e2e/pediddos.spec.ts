@@ -12,13 +12,19 @@ test('deve consltar um pedido aprovado', async ({ page }) => {
 
 
   //Act - Executa a ação
-  await page.getByTestId('search-order-id').fill('VLO-AE2RCC')
-  await page.getByTestId('search-order-button').click()
+  await page.getByRole('textbox', { name: 'Número do Pedido' }).fill('VLO-AE2RCC')
+  await page.getByRole('button', { name: 'Buscar Pedido' }).click()
+
+  //await page.getByTestId('search-order-id').fill('VLO-AE2RCC')
+  //await page.getByTestId('search-order-button').click()
 
 
   //Assert 
-  await expect(page.getByTestId('order-result-id')).toBeVisible()
-  await expect(page.getByTestId('order-result-id')).toContainText('VLO-AE2RCC')
+  await expect(page.getByText('VLO-AE2RCC')).toBeVisible()
+  await expect(page.getByTestId('order-result-VLO-AE2RCC')).toContainText('VLO-AE2RCC')
+ 
+  //await expect(page.getByTestId('')).toBeVisible({ timeout: 10_000 }) //10 segundos
+  //await expect(page.getByTestId('')).toContainText('VLO-AE2RCC')
 
   await expect(page.getByTestId('order-result-status')).toBeVisible()
   await expect(page.getByTestId('order-result-status')).toContainText('APROVADO')
